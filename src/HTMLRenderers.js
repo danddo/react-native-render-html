@@ -139,6 +139,9 @@ export function iframe (htmlAttribs, children, convertedCSSStyles, passProps) {
 
     const source = htmlAttribs.srcdoc ? { html: htmlAttribs.srcdoc } : { uri: htmlAttribs.src };
 
+    if (source.uri === 'about:blank'){
+        return null;
+    }
     return (
         <WebView key={passProps.key} source={source} style={style} />
     );
